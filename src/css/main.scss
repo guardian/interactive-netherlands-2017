@@ -11,3 +11,159 @@
 .interactive-atom {
     margin: 0 !important;
 }
+
+
+// Uncomment for embeds
+//@import "embed";
+
+// Uncomment for full screen (including immersive article main media)
+//@import "fullscreen";
+
+
+.gv-elex-results {
+    margin-top: 20px;
+}
+
+.gv-elex-wrapper{
+    max-width: 620px;
+    @media (min-width: 980px) {
+        padding-right: 320px !important;
+    }
+
+    @media (min-width: 1140px) {
+        padding-left: 160px !important;
+    }
+    @media (min-width: 1300px){
+        padding-left: 240px !important;
+    }
+}
+
+.gv-elex-heading {
+    margin: 0 !important;
+}
+
+.gv-elex-subhead {
+    margin: 0 !important;
+    @include fs-bodyHeading(1);
+    color: #555;
+}
+
+.gv-elex-footer {
+    @include fs-textSans(1);
+    margin: 0 0 30px 0!important;
+      color: #555;
+ 
+}
+
+.gv-summary {
+
+    h3 {
+       @include f-textSans;
+    color: #333;
+    font-size: 24px;
+    line-height: 28px;
+    
+    }
+
+    display: inline-block;
+    @include fs-data(3);
+    &#PVV {
+        float:right;
+    }
+    &#VVD {
+        float:left;
+    }
+}
+
+.gv-elex-chamber {
+    background-color: #eee;
+}
+
+.gv-elex-chamber-wrapper {
+    clear: both;
+    display: block;
+    height: 20px;
+    width: 100%;
+}
+
+
+.gv-elex-summary-wrapper {
+    margin: 1px;
+    display: block;
+    clear: both;
+}
+
+.gv-seats-summary.sf  {
+    float: right;
+}
+
+h3 {
+    margin-bottom: 2px !important;
+}
+
+.gv-elex-legend-entry {
+    display: inline-block;
+    @include fs-data(2);
+}
+
+.gv-elex-legend {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    clear: both;
+}
+
+.gv-halfway-line {
+    @include fs-data(1);
+    position: relative;
+    text-align:center;
+
+    ::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border: 0;
+    border-left: 1px solid #767676;
+    left: 50%;
+    top: -7px;
+    height: 8px;
+    }
+}
+
+.gv-elex-map {
+    display: block;
+    margin-top: 45px;
+    clear: both;
+}
+
+.gv-elex-svg {
+    margin-top: 15px;
+}
+
+.gv-elex-chamber {
+    margin-bottom: 5px;
+    clear: both;
+}
+
+.gv-elex-chamber-wrapper {
+    display: block;
+    height: 50px;
+    background-color: #ECECEC;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFAQMAAAC3obSmAAAABlBMVEUAAACOjo7hzJSnAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQffCRIOGhhxY7a4AAAAHWlUWHRDb21tZW50AAAAAABDcmVhdGVkIHdpdGggR0lNUGQuZQcAAAASSURBVAjXY+BgEGBQYHBgaAAAAqIA+YOVR0gAAAAASUVORK5CYII=');
+    background-repeat: repeat;
+    margin-bottom: 35px;
+}
+
+.gv-elex-bar {
+        height:50px;
+        display: inline-block;
+        margin: 0px !important;      
+        float: left;
+}
+
+.gv-elex-blob {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 2px;
+    border-radius: 2px 2px 2px 2px;
+}

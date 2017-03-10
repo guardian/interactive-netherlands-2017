@@ -1,0 +1,19 @@
+<div class="gv-summary-wrapper">
+    {{#.}} {{#vvd}}
+    <div class="gv-summary" id="VVD">
+        <h3>VVD</h3><span class="gv-seats-summary vvd">{{voteshare}}%</div>{{/vvd}}
+{{#pvv}}<div class="gv-summary" id="PVV"><h3>PVV</h3><span class="gv-seats-summary pvv">{{voteshare}}%</div>{{/pvv}}
+{{/.}}
+</div>
+<div class="gv-elex-chamber-wrapper gv-elex-chamber">
+{{#.}}
+<div class="gv-elex-bar gv-{{party}}"></div>
+{{/.}}
+<div class="gv-halfway-line"><span>50%</span></div>
+    </div>
+    <div class="gv-elex-legend">
+    {{#.}}
+    <div class="gv-elex-legend-entry">
+    <div class="gv-elex-blob gv-{{party}}"></div>{{party}}</div>
+    {{/.}}</div>
+</div>
