@@ -72,17 +72,17 @@ xr.get(config.docDataJson).then((resp) => {
     var resultswrapper = document.querySelector(".gv-results-wrapper");
     resultswrapper.innerHTML = chamberhtml;
     applybarwidths(parties);
-   // addHeightToMainMedia();
+    isMainMedia() ? resultswrapper.classList.add('gv-main-media') : '';
     window.resize();
 
 })
 
 
-function addHeightToMainMedia() {
+function isMainMedia() {
     var atomelement = parent.document.querySelector(".element-atom");
     var atomchild = atomelement.firstChild.nextSibling;
     var atomparent = atomelement.parentElement;
     if (atomchild.classList.contains('interactive-atom-fence') && atomparent.classList.contains('media-primary') ){
-        atomchild.style.height = "100%";
+        return true;
     }
 }

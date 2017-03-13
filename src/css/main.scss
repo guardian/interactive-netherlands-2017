@@ -46,6 +46,8 @@
 
 .gv-elex-heading {
     margin: 0 !important;
+    @include fs-bodyHeading(2);
+    color: #555;
 }
 
 .gv-elex-subhead {
@@ -61,10 +63,14 @@
  
 }
 
+.gv-seats-summary.pvv {
+        float:right;
+}
+
 .gv-summary {
 
     h3 {
-       @include f-textSans;
+    @include f-textSans;
     color: #333;
     font-size: 24px;
     margin-top: 10px;
@@ -73,6 +79,7 @@
 
     display: inline-block;
     @include fs-data(3);
+
     &#PVV {
         float:right;
     }
@@ -82,17 +89,18 @@
 }
 
 .gv-elex-chamber {
+    display: block;
     height: 50px;
-    background-color: #eee;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFAQMAAAC3obSmAAAABlBMVEUAAACOjo7hzJSnAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQffCRIOGhhxY7a4AAAAHWlUWHRDb21tZW50AAAAAABDcmVhdGVkIHdpdGggR0lNUGQuZQcAAAASSURBVAjXY+BgEGBQYHBgaAAAAqIA+YOVR0gAAAAASUVORK5CYII=');
+    background-repeat: repeat;
+    margin-bottom: 5px;
 }
 
 .gv-elex-chamber-wrapper {
-    clear: both;
     display: block;
-    height: 20px;
-    width: 100%;
+    clear: both;
+  
 }
-
 
 .gv-elex-summary-wrapper {
     margin: 0px;
@@ -101,13 +109,19 @@
 }
 
 
-.gv-elex-summary-wrapper.is-main-media {
-    height: 200px;
-    margin: 0px;
-    display: block;
-    clear: both;
-}
+.gv-results-wrapper.gv-main-media {
+    @media(max-width:480px){
+         padding-left: 10px;
+ padding-right: 10px;
 
+    }
+
+
+    @media(max-width: 619px)
+    {
+
+}
+}
 
 .gv-seats-summary.sf  {
     float: right;
@@ -143,30 +157,6 @@ h3 {
     top: -7px;
     height: 8px;
     }
-}
-
-.gv-elex-map {
-    display: block;
-    margin-top: 45px;
-    clear: both;
-}
-
-.gv-elex-svg {
-    margin-top: 15px;
-}
-
-.gv-elex-chamber {
-    margin-bottom: 5px;
-    clear: both;
-}
-
-.gv-elex-chamber-wrapper {
-    display: block;
-    height: 50px;
-    background-color: #ECECEC;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFAQMAAAC3obSmAAAABlBMVEUAAACOjo7hzJSnAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQffCRIOGhhxY7a4AAAAHWlUWHRDb21tZW50AAAAAABDcmVhdGVkIHdpdGggR0lNUGQuZQcAAAASSURBVAjXY+BgEGBQYHBgaAAAAqIA+YOVR0gAAAAASUVORK5CYII=');
-    background-repeat: repeat;
-    margin-bottom: 35px;
 }
 
 .gv-elex-bar {
