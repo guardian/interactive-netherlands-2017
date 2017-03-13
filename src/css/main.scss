@@ -20,9 +20,15 @@
 //@import "fullscreen";
 
 
+
 .gv-elex-results {
     margin-top: 20px;
 }
+
+.gv-progress-stamp {
+    @include fs-textSans(2);
+}
+
 
 .gv-elex-wrapper{
     max-width: 620px;
@@ -61,7 +67,7 @@
        @include f-textSans;
     color: #333;
     font-size: 24px;
-    line-height: 28px;
+    margin-top: 10px;
     
     }
 
@@ -88,10 +94,19 @@
 
 
 .gv-elex-summary-wrapper {
-    margin: 1px;
+    margin: 0px;
     display: block;
     clear: both;
 }
+
+
+.gv-elex-summary-wrapper.is-main-media {
+    height: 200px;
+    margin: 0px;
+    display: block;
+    clear: both;
+}
+
 
 .gv-seats-summary.sf  {
     float: right;
