@@ -49,10 +49,8 @@ function getcopy() {
             $(partyblobclass).css('background-color', p.colour);
 
             p.party == "PVV" ? $(partybarclass).css('float', 'right') : 0;
-            // console.log(newmaintemplate);
         })
         newmaintemplate = $.html('.gv-results-wrapper');
-        //   console.log(newmaintemplate);
         return newmaintemplate;
     }
 
@@ -71,7 +69,6 @@ function getcopy() {
 
                 var newmaintemplate = mainTemplate.replace('<div class="gv-results-wrapper"></div>', '<div class="gv-results-wrapper">' + chamberhtml + '</div>');
                 var newermaintemplate = applybarwidths(parties, newmaintemplate);
-                console.log(newermaintemplate);
                 return newermaintemplate;
             })
     

@@ -6,10 +6,10 @@
 
     {{#parties}} {{#vvd}}
     <div class="gv-summary" id="VVD">
-        <h3>VVD</h3><span class="gv-seats-summary vvd">{{seats}} seats</span>
+        <h3>VVD</h3><span class="gv-seats-summary vvd">{{seats}} seats {{#seatschange}}({{seatschangemessage}}){{/seatschange}}</span>
     </div> {{/vvd}} {{#pvv}}
     <div class="gv-summary" id="PVV">
-        <h3>PVV</h3><span class="gv-seats-summary pvv">{{seats}} seats</span>
+        <h3>PVV</h3><span class="gv-seats-summary pvv">{{seats}} seats {{#seatschange}}({{seatschangemessage}}){{/seatschange}}</span>
     </div> {{/pvv}} {{/parties}}
 </div>
 

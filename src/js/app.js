@@ -36,6 +36,7 @@ function orderparties(parties) {
     parties.map(function(p){
         p.party == "PVV" ? p.pvv = true: p.pvv = false;
         p.party == "VVD" ? p.vvd = true: p.vvd = false;
+        p.seatschangemessage = cleannumber(p.seats) > 0 ? '+' + cleannumber(p.seats) : cleannumber(p.seats);  
     })
    // console.log(parties);
     return parties;
