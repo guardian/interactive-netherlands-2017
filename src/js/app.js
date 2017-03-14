@@ -3,6 +3,9 @@ import config from './../../config.json'
 import Mustache from 'mustache'
 //import swig from 'swig'
 import chambertemplate from './../templates/chamber.html'
+import chamberseatstemplate from './../templates/chamberseats.html'
+
+var useSeats;
 
 function isMobile() {
     if (window.innerWidth < 620) {
@@ -42,7 +45,7 @@ function applybarwidths(parties) {
     parties.forEach(function(p){
         var partybarclass = ".gv-elex-bar.gv-" + p.party;
         var thisbar = document.querySelector(partybarclass);
-     thisbar.style.width = cleannumber(p.voteshare) + "%";
+        useSeats ? thisbar.style.width = (100 * (cleannumber(p.seats) / 150)) + '%' :  thisbar.style.width = cleannumber(p.voteshare) + "%";
         thisbar.style['background-color'] = p.colour;
 
      var partyblobclass = ".gv-elex-blob.gv-" + p.party;
@@ -59,18 +62,21 @@ function applybarwidths(parties) {
 
 xr.get(config.docDataJson).then((resp) => {
     var sheets = resp.data.sheets;
+    useSeats = sheets.results[1].seats > 0 ? true : false;
     var parties = orderparties(sheets.results);
     var furniture = sheets.furniture[0];
 
-    //compile mustache templates
-//    var headerhtml = Mustache.render(headertemplate, furniture)
     var everything = {"parties" : parties, "furniture" : furniture};
-    var chamberhtml = Mustache.render(chambertemplate, everything);
+    var chamberhtml = useSeats? Mustache.render(chamberseatstemplate, everything) : Mustache.render(chambertemplate, everything);
+
 
     var resultswrapper = document.querySelector(".gv-results-wrapper");
     resultswrapper.innerHTML = chamberhtml;
     applybarwidths(parties);
     isMainMedia() ? resultswrapper.classList.add('gv-main-media') : '';
+     if (isliveblog() == true && isMainMedia() != true ) {
+        document.querySelector(".gv-results-wrapper").classList.add("liveblog");
+    }
     window.resize();
 
 })

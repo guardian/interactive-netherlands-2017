@@ -1,0 +1,35 @@
+{{#furniture}}
+<div class="gv-elex-heading">{{heading}}</div>
+<div class="gv-summary-wrapper">
+    <div class="gv-progress-stamp">{{progress}}{{/furniture}}</div>
+
+
+    {{#parties}} {{#vvd}}
+    <div class="gv-summary" id="VVD">
+        <h3>VVD</h3><span class="gv-seats-summary vvd">{{seats}} seats</span>
+    </div> {{/vvd}} {{#pvv}}
+    <div class="gv-summary" id="PVV">
+        <h3>PVV</h3><span class="gv-seats-summary pvv">{{seats}} seats</span>
+    </div> {{/pvv}} {{/parties}}
+</div>
+
+
+<div class="gv-elex-chamber-wrapper">
+    <div class="gv-elex-chamber">
+        {{#parties}}
+        <div class="gv-elex-bar gv-{{party}}"></div>
+        {{/parties}}
+    </div>
+
+    <div class="gv-halfway-line"><span>76 seats for a majority</span></div>
+</div>
+
+<div class="gv-elex-legend">
+    {{#parties}}
+    <div class="gv-elex-legend-entry">
+        <div class="gv-elex-blob gv-{{party}}"></div>
+        {{party}} {{#displayname}}({{displayname}}){{/displayname}} {{seats}} seats
+    </div>
+    {{/parties}}
+</div>
+<div class="gv-elex-footer">{{#furniture}}{{#turnoutpercent}}Turnout: {{turnoutpercent}}%{{/turnoutpercent}}{{/furniture}}</div>

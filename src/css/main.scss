@@ -19,6 +19,14 @@
 // Uncomment for full screen (including immersive article main media)
 //@import "fullscreen";
 
+.gv-results-wrapper.liveblog {
+    @media (min-width: 620px) {
+    padding-left: 80px;
+    padding-right: 15px;
+    }
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 
 .gv-elex-results {
