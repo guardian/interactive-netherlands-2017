@@ -11,8 +11,6 @@ function isMobile() {
 }
 
 
-
-
 function isliveblog() {
     var url = window.top.location.pathname;
     if (url.search('/live/') > 0 || url.search('liveblog') > 0) {
