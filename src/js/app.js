@@ -6,6 +6,15 @@ import chambertemplate from './../templates/chamber.html'
 import chamberseatstemplate from './../templates/chamberseats.html'
 
 var useSeats;
+const dataurl = isPreview() ? config.docDataJsonPreview : config.docDataJson;
+
+function isPreview() {
+    var url = window.top.location.hostname;
+   // console.log(url);
+    if (url.search('gutools.co.uk') > 0) {
+        return true;
+    } else {return false};
+}
 
 function isMobile() {
     if (window.innerWidth < 620) {
@@ -36,7 +45,7 @@ function orderparties(parties) {
     parties.map(function(p){
         p.party == "PVV" ? p.pvv = true: p.pvv = false;
         p.party == "VVD" ? p.vvd = true: p.vvd = false;
-        p.seatschangemessage = cleannumber(p.seats) > 0 ? '+' + cleannumber(p.seats) : cleannumber(p.seats);  
+        p.seatschangemessage = cleannumber(p.seatschange) > 0 ? '+' + cleannumber(p.seatschange) : cleannumber(p.seatschange);  
     })
    // console.log(parties);
     return parties;
@@ -61,7 +70,7 @@ function applybarwidths(parties) {
     })
 }
 
-xr.get(config.docDataJson).then((resp) => {
+xr.get(dataurl).then((resp) => {
     var sheets = resp.data.sheets;
     useSeats = sheets.results[1].seats > 0 ? true : false;
     var parties = orderparties(sheets.results);

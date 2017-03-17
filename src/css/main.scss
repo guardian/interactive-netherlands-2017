@@ -73,6 +73,7 @@
 
 .gv-seats-summary.pvv {
         float:right;
+        clear:both;
 }
 
 .gv-summary {
@@ -89,6 +90,9 @@
     @include fs-data(3);
 
     &#PVV {
+        float:right;
+    }
+    &#PVV h3 {
         float:right;
     }
     &#VVD {
