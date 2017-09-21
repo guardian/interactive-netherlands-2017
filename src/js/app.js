@@ -5,13 +5,14 @@ import Mustache from 'mustache'
 import chambertemplate from './../templates/chamber.html'
 import chamberseatstemplate from './../templates/chamberseats.html'
 
+
+
 var useSeats;
-const dataurl = isPreview() ? config.docDataJsonPreview : config.docDataJson;
+var dataurl = isPreview() ? config.docDataJsonPreview : config.docDataJson;
 
 function isPreview() {
     var url = window.top.location.hostname;
-   // console.log(url);
-    if (url.search('gutools.co.uk') > 0) {
+    if (url.search('gutools.co.uk') >= 0 || url.search('localhost') >= 0) {
         return true;
     } else {return false};
 }
@@ -43,8 +44,8 @@ function cleannumber(input) {
 function orderparties(parties) {
     parties = parties.sort(function (a, b) { return cleannumber(b.voteshare) - cleannumber(a.voteshare) });
     parties.map(function(p){
-        p.party == "PVV" ? p.pvv = true: p.pvv = false;
-        p.party == "VVD" ? p.vvd = true: p.vvd = false;
+        p.party == "National" ? p.pvv = true: p.pvv = false;
+        p.party == "Labour" ? p.vvd = true: p.vvd = false;
         p.seatschangemessage = cleannumber(p.seatschange) > 0 ? '+' + cleannumber(p.seatschange) : cleannumber(p.seatschange);  
     })
    // console.log(parties);
@@ -64,7 +65,7 @@ function applybarwidths(parties) {
      thisblob.style['background-color'] = p.colour;
     // console.log(thisblob);
 
-     p.party == "PVV" ? thisbar.style.float = "right" : 0 ;
+     p.party == "Labour" ? thisbar.style.float = "right" : 0 ;
 
      
     })
@@ -72,7 +73,7 @@ function applybarwidths(parties) {
 
 xr.get(dataurl).then((resp) => {
     var sheets = resp.data.sheets;
-    useSeats = sheets.results[1].seats > 0 ? true : false;
+    useSeats = cleannumber(sheets.results[1].seats) > 0 ? true : false;
     var parties = orderparties(sheets.results);
     var furniture = sheets.furniture[0];
 
@@ -100,3 +101,4 @@ function isMainMedia() {
         return true;
     }
 }
+
