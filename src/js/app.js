@@ -5,7 +5,7 @@ import Mustache from 'mustache'
 import chambertemplate from './../templates/chamber.html'
 import chamberseatstemplate from './../templates/chamberseats.html'
 
-
+var totalseats = 120;
 
 var useSeats;
 var dataurl = isPreview() ? config.docDataJsonPreview : config.docDataJson;
@@ -44,8 +44,8 @@ function cleannumber(input) {
 function orderparties(parties) {
     parties = parties.sort(function (a, b) { return cleannumber(b.voteshare) - cleannumber(a.voteshare) });
     parties.map(function(p){
-        p.party == "National" ? p.pvv = true: p.pvv = false;
-        p.party == "Labour" ? p.vvd = true: p.vvd = false;
+        p.party == "Labour" ? p.pvv = true: p.pvv = false;
+        p.party == "National" ? p.vvd = true: p.vvd = false;
         p.seatschangemessage = cleannumber(p.seatschange) > 0 ? '+' + cleannumber(p.seatschange) : cleannumber(p.seatschange);  
     })
    // console.log(parties);
@@ -56,7 +56,7 @@ function applybarwidths(parties) {
     parties.forEach(function(p){
         var partybarclass = ".gv-elex-bar.gv-" + p.party;
         var thisbar = document.querySelector(partybarclass);
-        useSeats ? thisbar.style.width = (100 * (cleannumber(p.seats) / 150)) + '%' :  thisbar.style.width = cleannumber(p.voteshare) + "%";
+        useSeats ? thisbar.style.width = (100 * (cleannumber(p.seats) / totalseats)) + '%' :  thisbar.style.width = cleannumber(p.voteshare) + "%";
         thisbar.style['background-color'] = p.colour;
 
      var partyblobclass = ".gv-elex-blob.gv-" + p.party;
@@ -76,6 +76,8 @@ xr.get(dataurl).then((resp) => {
     useSeats = cleannumber(sheets.results[1].seats) > 0 ? true : false;
     var parties = orderparties(sheets.results);
     var furniture = sheets.furniture[0];
+    console.log(furniture);
+    totalseats = cleannumber(furniture.totalseats);
 
     var everything = {"parties" : parties, "furniture" : furniture};
     var chamberhtml = useSeats? Mustache.render(chamberseatstemplate, everything) : Mustache.render(chambertemplate, everything);
