@@ -44,8 +44,8 @@ function cleannumber(input) {
 function orderparties(parties) {
     parties = parties.sort(function (a, b) { return cleannumber(b.voteshare) - cleannumber(a.voteshare) });
     parties.map(function(p){
-        p.party == "Labour" ? p.pvv = true: p.pvv = false;
-        p.party == "National" ? p.vvd = true: p.vvd = false;
+        p.party == "National" ? p.pvv = true: p.pvv = false;
+        p.party == "Labour" ? p.vvd = true: p.vvd = false;
         p.seatschangemessage = cleannumber(p.seatschange) > 0 ? '+' + cleannumber(p.seatschange) : cleannumber(p.seatschange);  
     })
    // console.log(parties);
@@ -65,7 +65,7 @@ function applybarwidths(parties) {
      thisblob.style['background-color'] = p.colour;
     // console.log(thisblob);
 
-     p.party == "Labour" ? thisbar.style.float = "right" : 0 ;
+     p.party == "National" ? thisbar.style.float = "right" : 0 ;
 
      
     })

@@ -32,8 +32,8 @@ function getcopy() {
     function orderparties(parties) {
         parties = parties.sort(function (a, b) { return cleannumber(b.voteshare) - cleannumber(a.voteshare) });
         parties.map(function (p) {
-            p.party == "National" ? p.pvv = true : p.pvv = false;
-            p.party == "Labour" ? p.vvd = true : p.vvd = false;
+            p.party == "Labour" ? p.pvv = true : p.pvv = false;
+            p.party == "National" ? p.vvd = true : p.vvd = false;
         })
         return parties;
     }
@@ -48,7 +48,7 @@ function getcopy() {
             var partyblobclass = ".gv-elex-blob.gv-" + p.party;
             $(partyblobclass).css('background-color', p.colour);
 
-            p.party == "Labour" ? $(partybarclass).css('float', 'right') : 0;
+            p.party == "National" ? $(partybarclass).css('float', 'right') : 0;
         })
         newmaintemplate = $.html('.gv-results-wrapper');
         return newmaintemplate;
