@@ -2,8 +2,13 @@ import mainTemplate from './src/templates/main.html!text'
 import config from './../config.json'
 import Mustache from 'mustache'
 import chambertemplate from './src/templates/chamber.html!text'
+import chamberseatstemplate from './src/templates/chamberseats.html!text'
 import fetch from 'node-fetch'
 import cheerio from 'cheerio'
+
+var totalseats = 120;
+
+var useSeats;
 
 function getcopy() {
     function isMobile() {
@@ -32,8 +37,9 @@ function getcopy() {
     function orderparties(parties) {
         parties = parties.sort(function (a, b) { return cleannumber(b.voteshare) - cleannumber(a.voteshare) });
         parties.map(function (p) {
-            p.party == "Labour" ? p.pvv = true : p.pvv = false;
-            p.party == "National" ? p.vvd = true : p.vvd = false;
+            p.party == "National" ? p.pvv = true : p.pvv = false;
+            p.party == "Labour" ? p.vvd = true : p.vvd = false;
+            p.seatschangemessage = cleannumber(p.seatschange) > 0 ? '+' + cleannumber(p.seatschange) : cleannumber(p.seatschange);  
         })
         return parties;
     }
@@ -42,7 +48,7 @@ function getcopy() {
         let $ = cheerio.load(newmaintemplate);
         parties.forEach(function (p) {
             var partybarclass = ".gv-elex-bar.gv-" + p.party;
-            $(partybarclass).css('width', cleannumber(p.voteshare) + '%')
+            $(partybarclass).css('width', (100 * (cleannumber(p.seats) / totalseats)) + '%')
                 .css('background-color', p.colour);
 
             var partyblobclass = ".gv-elex-blob.gv-" + p.party;
@@ -65,7 +71,7 @@ function getcopy() {
                 var furniture = sheets.furniture[0];
 
                 var everything = { "parties": parties, "furniture": furniture };
-                var chamberhtml = Mustache.render(chambertemplate, everything);
+                var chamberhtml = Mustache.render(chamberseatstemplate, everything);
 
                 var newmaintemplate = mainTemplate.replace('<div class="gv-results-wrapper"></div>', '<div class="gv-results-wrapper">' + chamberhtml + '</div>');
                 var newermaintemplate = applybarwidths(parties, newmaintemplate);

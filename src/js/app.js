@@ -7,7 +7,7 @@ import chamberseatstemplate from './../templates/chamberseats.html'
 
 var totalseats = 120;
 
-var useSeats;
+var useSeats = true;
 var dataurl = isPreview() ? config.docDataJsonPreview : config.docDataJson;
 
 function isPreview() {
@@ -56,7 +56,7 @@ function applybarwidths(parties) {
     parties.forEach(function(p){
         var partybarclass = ".gv-elex-bar.gv-" + p.party;
         var thisbar = document.querySelector(partybarclass);
-        useSeats ? thisbar.style.width = (100 * (cleannumber(p.seats) / totalseats)) + '%' :  thisbar.style.width = cleannumber(p.voteshare) + "%";
+        thisbar.style.width = cleannumber(p.voteshare) + "%";
         thisbar.style['background-color'] = p.colour;
 
      var partyblobclass = ".gv-elex-blob.gv-" + p.party;
